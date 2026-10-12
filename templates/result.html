@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Comparison &mdash; PPLPRT{% endblock %}
+{% block content %}
+<section class="result-summary">
+  {% if plates_found %}
+    <p class="result-status success">{{ num_plates }} licence plate(s) detected and redacted.</p>
+  {% else %}
+    <p class="result-status warning">No licence plates detected in this image.</p>
+  {% endif %}
+</section>
+
+<section class="comparison">
+  <div class="comparison-panel">
+    <h3>Original</h3>
+    <img src="{{ url_for('serve_output', filename=original_file) }}" alt="Original image">
+  </div>
+  <div class="comparison-panel">
+    <h3>Redacted</h3>
+    <img src="{{ url_for('serve_output', filename=redacted_file) }}" alt="Redacted image">
+  </div>
+</section>
+
+<section class="actions">
+  <a href="{{ url_for('download', filename=redacted_file) }}" class="btn-primary">Download Redacted Image</a>
+  <a href="{{ url_for('index') }}" class="btn-secondary">Process Another Image</a>
+</section>
+{% endblock %}

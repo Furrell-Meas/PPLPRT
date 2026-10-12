@@ -1,0 +1,9 @@
+# Copy this file to your training environment (e.g. Colab) and adjust `path`
+# to wherever ccpd_to_yolo.py wrote the dataset.
+
+path: /content/ccpd_yolo   # <-- change this to your dest folder from ccpd_to_yolo.py
+train: images/train
+val: images/val
+
+names:
+  0: license_plate

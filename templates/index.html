@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Upload &mdash; PPLPRT{% endblock %}
+{% block content %}
+<section class="upload-card">
+  <form action="{{ url_for('process') }}" method="post" enctype="multipart/form-data" id="upload-form">
+    <label for="image-input" class="upload-drop" id="upload-drop">
+      <span id="upload-label">Click to choose an image (JPG or PNG, max 10MB)</span>
+      <img id="preview-img" style="display:none;" alt="Preview">
+    </label>
+    <input type="file" id="image-input" name="image" accept=".jpg,.jpeg,.png" required>
+
+    <button type="submit" class="btn-primary" id="submit-btn" disabled>Process Image &rarr;</button>
+  </form>
+</section>
+
+<script>
+  const input = document.getElementById('image-input');
+  const label = document.getElementById('upload-label');
+  const preview = document.getElementById('preview-img');
+  const submitBtn = document.getElementById('submit-btn');
+
+  input.addEventListener('change', () => {
+    const file = input.files[0];
+    if (!file) return;
+    submitBtn.disabled = false;
+    label.textContent = file.name;
+    const reader = new FileReader();
+    reader.onload = e => {
+      preview.src = e.target.result;
+      preview.style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  });
+
+  document.getElementById('upload-form').addEventListener('submit', () => {
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Processing...';
+  });
+</script>
+{% endblock %}

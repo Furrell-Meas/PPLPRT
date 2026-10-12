@@ -1,0 +1,9 @@
+Flask==3.0.3
+opencv-python-headless==4.10.0.84
+numpy==1.26.4
+Werkzeug==3.0.4
+
+# Only needed once you add a trained model at model/best.pt (see /training).
+# The app runs fine without this installed -- it just uses the Haar cascade
+# fallback until ultralytics + a trained model are present.
+ultralytics==8.3.0
