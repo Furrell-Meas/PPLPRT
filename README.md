@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Privacy-Preserving Licence Plate Redaction Tool (PPLPRT)
 
 A working Term 3 implementation. Upload a JPG/PNG, the app detects visible
@@ -79,3 +80,6 @@ pplprt/
    test image set covering edge cases (angled plates, low light, no plate).
 3. Add basic session cleanup (delete uploads/outputs after N minutes).
 4. Optional: containerise with Docker for the Operating Requirements section.
+=======
+# PPLPRT
+>>>>>>> 5286cf18804edde4da0763cb8d2e49fd4aaea156
